@@ -23,7 +23,7 @@ class CatalogController extends Controller
         $movie = new Movie();
         $movie->title = $request->input('title');
         $movie->year = $request->input('year');
-        $movie->Director = $request->input('Director');
+        $movie->director = $request->input('Director');
         $movie->poster = $request->input('poster');
         $movie->synopsis = $request->input('synopsis');
         $movie->save();
@@ -31,13 +31,12 @@ class CatalogController extends Controller
     }
     public function putEdit(Request $request, $id){
         $movie = movie::findOrFail($id);
-
         $movie->title = $request->title;
         $movie->year = $request->year;
-        $movie->Director = $request->Director;
+        $movie->director = $request->Director;
         $movie->poster = $request->poster;
         $movie->synopsis = $request->synopsis;
         $movie->save();
-        return redirect()->action('CatalogController@getIndex');
+        return redirect('catalog/show/'.$id);
     }
 }

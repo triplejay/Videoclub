@@ -20,6 +20,7 @@
                     <form action="#" method="post">
                         {{-- TODO: Protección contra CSRF --}}
                         {{ method_field('PUT') }}
+                        {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title">Título</label>
                             <input type="text" name="title" id="title" class="form-control" value="{{$id->title}}">
